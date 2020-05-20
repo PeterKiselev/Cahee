@@ -1,0 +1,47 @@
+.section {
+    &--home {
+        padding-top: 100px;
+        display: flex;
+        align-items: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+
+        & .container {
+            flex-basis: 100%;
+        }
+
+        @media screen and (min-width: 992px) {
+            padding-top: 150px;
+        }
+    }
+
+    &--home &__head {
+        margin-bottom: 30px;
+    }
+
+    &--home &__btn {
+        background-color: $header-color-primary;
+        border-color: $header-color-primary;
+        @include hover {
+            background-color: $body-bg;
+            color: $header-color-primary;
+        }
+    }
+}
+
+.scroll {
+    fill: $body-color;
+    @include posA(auto, auto, $left: 50%);
+    @include transform;
+    @include tr;
+    @include hover {
+        fill: $header-color-primary;
+    }
+
+    @media screen and (min-width: 425px) {
+        bottom: 3%;
+    }
+    @media screen and (min-width: 992px) {
+        bottom: 10%;
+    }
+}

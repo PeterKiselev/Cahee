@@ -1,0 +1,74 @@
+.section {
+    &--gallery {
+        background-color: $gallery-bg;
+    }
+    &--gallery &__head {
+        max-width: 600px;
+    }
+    &--gallery &__btn {
+        background-color: $gallery-color-primary;
+        border-color: $gallery-color-primary;
+        @include hover {
+            background-color: $body-bg;
+            color: $gallery-color-primary;
+        }
+    }
+}
+
+.grid {
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+    justify-content: center;
+
+    @media screen and (min-width: 576px) {
+        grid-template-columns: repeat(4, 18%);
+    }
+    @media screen and (min-width: 992px) {
+        grid-template-columns: repeat(12, 1fr);
+        grid-gap: 30px;
+    }
+}
+
+.food {
+    padding-top: 70%;
+    position: relative;
+    background-color: $secondary-color;
+    overflow: hidden;
+    grid-column: span 1;
+
+    &__img {
+        @include posA(50%, auto, auto, 50%);
+        @include transform;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    &--lg {
+        @media screen and (min-width: 576px) {
+            grid-column: span 4;
+            grid-row: span 2;       
+        }
+        @media screen and (min-width: 992px) {
+            grid-column: span 8;
+        }
+    }
+    &--md {
+        @media screen and (min-width: 576px) {
+            grid-column: span 4;
+        }
+        @media screen and (min-width: 992px) {
+            grid-column: span 6;
+        }
+    }
+    &--sm {
+        @media screen and (min-width: 576px) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        @media screen and (min-width: 992px) {
+            grid-column: span 4;
+        }
+    }
+}

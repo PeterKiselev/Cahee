@@ -1,0 +1,109 @@
+.section {
+    &--blog {
+        background-color: $blog-bg;
+    }
+    &--blog &__head {
+        max-width: 600px;
+    }
+}
+
+.recipe {
+    text-align: left;
+    background-color: $secondary-color;
+    color: $secondary-color;
+    position: relative;
+    width: 100%;
+    padding-top: 83%;
+    @include tr;
+
+    @include hover {
+        box-shadow: 0px 4px 10px 0px rgba($body-color, 0.5);
+    }
+
+    &__link {
+        overflow: hidden;
+        @include posA;
+        @include full;
+        @include tr;
+    }
+    
+    &__link:hover &__img {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    &__img-wrap {
+        @include full;
+        @include posA;
+        &:after {
+            content: '';
+            @include posA;
+            @include full;
+            background-image: linear-gradient(to bottom, rgba($secondary-color, 0) 0%, rgba($secondary-color, 0) 30%, rgba(0,0,0,.9) 100%);
+        }
+    }
+
+    &__img {
+        @include posA(50%, auto, auto, 50%);
+        @include transform;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        @include tr;
+    }
+
+    &__content {
+        height: 100%;
+        padding: 30px 20px 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__data {
+        display: inline-block;
+        width: 65px;
+        height: 65px;
+        text-align: center;
+        padding: .2em .3em;
+        background-color: rgba(38,38,38,0.5);
+        border-radius: 5px;
+        @include font($fz: 2.8rem, $fw: 700, $lh: .8);
+        overflow: hidden;
+        @include tr;
+        @media screen and (min-width) {
+            font-size: 3.2rem;
+        }
+    }
+
+    &__month {
+        display: inline-block;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        overflow: hidden;
+        line-height: 1;
+        width: 100%;
+        @media screen and (min-width) {
+            font-size: 2.1rem;
+        }
+    }
+
+    &__title {
+        flex-grow: 1;
+        align-items: flex-end;
+        display: flex;
+        @include font($fz: 2rem, $fw: 700, $lh: 1.25);
+        max-height: 120px;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    // &__attributes {
+    //     font-style: normal;
+    //     overflow: hidden;
+    //     max-height: 40px;
+    // }
+
+    &__author:not(:empty) + &__time:not(:empty):before {
+        content: ' - ';
+    }
+}

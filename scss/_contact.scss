@@ -1,0 +1,80 @@
+.section--contact {
+    .row {
+        @media screen and (min-width: 992px) {
+            align-items: flex-start;
+        }
+    }
+}
+
+.form {
+    @media screen and (min-width: 992px) {
+        max-width: 500px;
+    }
+
+    &__field {
+        display: inline-block;
+        width: 100%;
+        border: none;
+        background-color: rgba($input-bg, .5);
+        resize: none;
+        @include font($fz: 1.5rem, $fc: $secondary-color, $lh: inherit);
+        padding: 13px 20px 13px;
+        @include tr;
+        position: relative;
+
+        & + & {
+            margin-top: 15px;
+        }
+        &::placeholder {
+            color: $secondary-color;
+            @include tr;
+        }
+        &:focus {
+            outline: none;
+            background-color: $input-bg;
+            font-weight: 700;
+            border-left: $border-width-input solid $contact-color-primary;
+            padding-left: 15px;
+        }
+        &:focus::placeholder {
+            opacity: 0;
+        }
+        &:-webkit-autofill {
+            box-shadow: inset 0 0 0 64px $input-bg;
+            -webkit-text-fill-color: $body-color;
+            font-weight: 700;
+        }
+        &:-webkit-autofill:focus {
+            box-shadow: inset 0 0 0 64px $input-bg;
+            -webkit-text-fill-color: $secondary-color;
+        }
+        &[name="message"] {
+            height: 250px;
+        }
+    }
+}
+
+.address {
+    font-style: normal;
+    @media screen and (min-width: 992px) {
+        padding-left: 70px;
+    }
+    &__title {
+        @include font($fz: 1.7rem, $fw: 700);
+        text-transform: uppercase;
+        & + & {
+            margin-top: 20px;
+        }
+    }
+    &__link {
+        display: block;
+        @include font($fz: 1.2em, $fw: 300);
+        text-transform: none;
+        @include tr;
+        @include hover {
+            color: $input-bg;
+            text-shadow: 1px 0 0 $input-bg;
+        }
+    }
+}
+

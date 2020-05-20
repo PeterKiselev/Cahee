@@ -1,0 +1,101 @@
+.header {
+    padding: 20px 0;
+    @include posA($bottom: auto);
+    @media screen and (min-width: 992px) {
+        padding: 50px 0;
+    }
+}
+
+.nav {
+    @include flex($jc: space-between);
+}
+
+.logo {
+    display: inline-block;
+    text-transform: capitalize;
+    @include font($ff: $logo-ff, $fz: 5rem, $lh: 1);
+    @include tr;
+    @include hover {
+        color: $header-color-primary;
+    }
+    z-index: 2;
+}
+
+.toggler {
+    padding: 1em;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+
+    & svg {
+        fill: $body-color;
+        vertical-align: middle;
+        @include hover {
+            fill: $header-color-primary;
+        }
+    }
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
+}
+
+.menu {
+    @include posA($bottom: auto, $left: auto);
+    z-index: 1;
+    will-change: transform;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: inset 0 0 50px rgba($body-color, .5);
+    background: rgba($secondary-color, .9);
+    opacity: 0;
+    transform-origin: calc(100% - 15px) 15px;
+    transform: translate(0, 0) scale(.1);
+    @include flex;
+    flex-direction: column;
+    @include tr(.5s);
+    .menu-opened & {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        z-index: 1;
+    }
+
+    &__link {
+        text-transform: uppercase;
+        display: inline-block;
+        padding: .9em;
+        position: relative;
+        @include font($fz: 1.2em, $fw: 700);
+        &:before {
+            content: '';
+            @include posA(7px, 12.5%, auto, auto);
+            display: inline-block;
+            width: 75%;
+            border-top: $border-width solid $header-color-primary;
+            opacity: 0;
+            @include tr;
+        }
+        @include hover {
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+    @media screen and (min-width: 992px) {
+        position: relative;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        box-shadow: inset 0 0 50px rgba($body-color, 0);
+        background: rgba($secondary-color, 0);  
+
+        &__link {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.menu-opened {
+    overflow: hidden;
+}
